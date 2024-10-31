@@ -1,11 +1,13 @@
+import os
 import discord
 from discord.ext import commands, tasks
+from dotenv import load_dotenv
 import schedule
 import tracemalloc
 import asyncio
 from datetime import datetime
-from dotenv import load_dotenv
-import os
+
+
 
 # Load environment variables from a .env file
 load_dotenv()
