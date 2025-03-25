@@ -42,7 +42,7 @@ Thread(target=run_flask).start()
 # --- Discord Bot Setup ---
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="!", intents=intents)
-tree = app_commands.CommandTree(bot)
+tree = bot.tree
 
 # --- Task Config ---
 channel_id = 1298102437659414528  # Channel for task posts
