@@ -156,7 +156,7 @@ async def on_message(message):
 async def hello(interaction: discord.Interaction):
     await interaction.response.send_message("Hello! I am your new bot!")
 
-@tree.command(name="send report", description="Send the most recent uploaded .txt file")
+@tree.command(name="sendreport", description="Send the most recent uploaded .txt file")
 async def sendreport(interaction: discord.Interaction):
     if interaction.channel.id != TARGET_CHANNEL_ID:
         await interaction.response.send_message("⚠️ You can't use this command here.", ephemeral=True)
