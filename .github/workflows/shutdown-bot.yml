@@ -2,7 +2,7 @@ name: Shutdown Railway Bot
 
 on:
   schedule:
-    - cron: '30 0 * * 1-5'  # 8:30 AM PHT = 00:30 UTC
+    - cron: '30 0 * * 1-5'  # 8:30 AM PH time = 00:30 UTC
   workflow_dispatch:
 
 jobs:
