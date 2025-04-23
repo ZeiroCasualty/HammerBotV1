@@ -108,7 +108,7 @@ async def send_tasks_to_channel():
         return  # Skip weekends (PH time)
 
     if is_nz_holiday_from_ph():
-        await channel.send("Good morning, today is a holiday!\nNo daily tasks. Hurray! :partying_face:")
+        await channel.send("Good morning, today is a holiday!\nNo daily tasks. Hooray! :partying_face:")
         return
 
     now = get_ph_time()
