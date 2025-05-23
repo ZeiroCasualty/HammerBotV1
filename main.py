@@ -202,7 +202,8 @@ async def on_message(message):
 
 @tree.command(name="hello", description="Say hi to the bot")
 async def hello(interaction: discord.Interaction):
-    await interaction.response.send_message("Hello! I am your new bot!")
+    await interaction.response.defer(thinking=False)
+    await interaction.followup.send("Hello! I am your new bot!")
 
 @tree.command(name="sendreport", description="Send the most recent uploaded .txt files")
 async def sendreport(interaction: discord.Interaction):
