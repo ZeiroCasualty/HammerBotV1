@@ -252,6 +252,23 @@ async def sendreport(interaction: discord.Interaction):
     else:
         await interaction.followup.send("⚠️ No recent file found from the expected upload channel.")
 
+@tree.command(name="clear", description="Delete all stored files in the weekly_reports folder")
+async def clear_files(interaction: discord.Interaction):
+    deleted_files = 0
+    for fname in os.listdir(FOLDER_NAME):
+        if fname.endswith(".txt"):
+            fpath = os.path.join(FOLDER_NAME, fname)
+            try:
+                os.remove(fpath)
+                deleted_files += 1
+            except Exception as e:
+                print(f"❌ Failed to delete {fpath}: {e}")
+
+    if deleted_files > 0:
+        await interaction.response.send_message(f"🗑️ Deleted {deleted_files} file(s).")
+    else:
+        await interaction.response.send_message("📁 No files found to delete.")
+
 # --- Start Bot ---
 if TOKEN:
     bot.run(TOKEN)
