@@ -63,13 +63,10 @@ members_info = {
   1297751702019113081: "Yasmin",
   182703599397240832: "Bernard",
   1297750232745902196: "Dani",
-  1297749519559299102: "Justin",
   1297749741190385736: "Jen",
   1297749740489936939: "Jessa",
   1297749642230104125: "Cris",
   1315867037003944000: "Jonathan",
-  1304646454387806268: "Remmie",
-  1406800531707658283: "Josh",
 }
 
 members_tasks = {
@@ -93,13 +90,6 @@ members_tasks = {
       "Wash – EOD",                  # Wednesday
       "Cook – Lunch",                # Thursday
       "Wash – Breakfast (Outdoor)"   # Friday
-  ],
-  1297749519559299102: [  # Xai
-      "Wash – Lunch (Indoor)",       # Monday
-      "Organize Dishes",             # Tuesday
-      "Wash – Breakfast (Outdoor)",  # Wednesday
-      "Set/Clean Table & Leftovers", # Thursday
-      "Wash – Lunch (Outdoor)"       # Friday
   ],
   1297749741190385736: [  # Jen
       "Set/Clean Table & Leftovers", # Monday
@@ -128,20 +118,6 @@ members_tasks = {
       "Cook – Breakfast",            # Wednesday
       "Organize Dishes",             # Thursday
       "Cook – Lunch"                 # Friday
-  ],
-  1304646454387806268: [  # Remmie
-      "Wash – Lunch (Outdoor)",      # Monday
-      "Wash – Breakfast (Outdoor)",  # Tuesday
-      "Wash – Lunch (Indoor)",       # Wednesday
-      "Wash – EOD",                  # Thursday
-      "Cook Rice w/ Eggs"            # Friday
-  ],
-  1406800531707658283: [  # Josh
-      "Cook – Lunch",                # Monday
-      "Wash – Breakfast (Indoor)",   # Tuesday
-      "Set/Clean Table & Leftovers", # Wednesday
-      "Cook – Breakfast",            # Thursday
-      "Wash – Lunch (Indoor)"        # Friday
   ],
 }
 
