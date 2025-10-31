@@ -144,6 +144,9 @@ async def send_tasks_to_channel():
     await channel.send(msg)
 
 async def send_tasks_to_members():
+    if is_nz_holiday_from_ph():
+        return
+        
     day_index = get_ph_time().weekday()
     for uid, tasks in members_tasks.items():
         if day_index < len(tasks):
