@@ -88,8 +88,8 @@ members_tasks = {
       "Organize Dishes",             # Monday
       "Cook – Breakfast",            # Tuesday
       "Wash – EOD",                  # Wednesday
-      "Cook – Lunch",                # Thursday
-      "Wash – Breakfast (Outdoor)"   # Friday
+      "Wash – Breakfast (Outdoor)",  # Thursday
+      "Cook – Lunch"                 # Friday
   ],
   1297749741190385736: [  # Jen
       "Set/Clean Table & Leftovers", # Monday
@@ -116,8 +116,8 @@ members_tasks = {
       "Wash – EOD",                  # Monday
       "Cook – Lunch",                # Tuesday
       "Cook – Breakfast",            # Wednesday
-      "Wash – Breakfast (Outdoor)",  # Thursday
-      "Cook – Lunch"                 # Friday
+      "Cook – Lunch",                # Thursday
+      "Wash – Breakfast (Outdoor)"   # Friday
   ],
 }
 
