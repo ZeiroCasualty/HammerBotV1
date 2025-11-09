@@ -70,54 +70,54 @@ members_info = {
 }
 
 members_tasks = {
-  182703599397240832: [  # Bernie
-      "Wash – Breakfast (Indoor)",   # Monday
-      "Cook Rice w/ Eggs",           # Tuesday
-      "Wash – Lunch (Outdoor)",      # Wednesday
-      "Wash – Breakfast (Outdoor)",  # Thursday
-      "Wash – EOD"                   # Friday
-  ],
   1297751702019113081: [  # Yasmin
-      "Cook – Breakfast",            # Monday
-      "Set/Clean Table & Leftovers", # Tuesday
-      "Cook – Lunch",                # Wednesday
-      "Wash – Breakfast (Indoor)",   # Thursday
-      "Cook – Breakfast"             # Friday
+      "Cook – Breakfast",                    # Monday
+      "Wash – EOD",                          # Tuesday
+      "Cook – Lunch",                        # Wednesday
+      "Wash – Lunch (Outdoor)",              # Thursday
+      "Cook – Breakfast",                    # Friday
+  ],
+  182703599397240832: [  # Bernard
+      "Wash – Lunch (Indoor)",                            # Monday
+      "Wash – Breakfast (Indoor) + Organize Dishes",      # Tuesday
+      "Wash – Lunch (Outdoor)",                           # Wednesday
+      "Wash – EOD",                                       # Thursday
+      "Cook Rice w/ Eggs + Set/Clean Table & Leftovers",  # Friday
   ],
   1297750232745902196: [  # Dani
-      "Organize Dishes",             # Monday
-      "Cook – Breakfast",            # Tuesday
-      "Wash – EOD",                  # Wednesday
-      "Wash – Breakfast (Outdoor)",  # Thursday
-      "Cook – Lunch"                 # Friday
+      "Cook – Lunch",                                     # Monday
+      "Cook – Breakfast",                                 # Tuesday
+      "Wash – Breakfast (Indoor) + Organize Dishes",      # Wednesday
+      "Cook – Breakfast",                                 # Thursday
+      "Cook – Lunch",                                     # Friday
   ],
   1297749741190385736: [  # Jen
-      "Set/Clean Table & Leftovers", # Monday
-      "Wash – Lunch (Outdoor)",      # Tuesday
-      "Wash – Breakfast (Indoor)",   # Wednesday
-      "Cook Rice w/ Eggs",           # Thursday
-      "Organize Dishes"              # Friday
+      "Cook Rice w/ Eggs + Set/Clean Table & Leftovers",  # Monday
+      "Wash – Lunch (Outdoor)",                           # Tuesday
+      "Wash – EOD",                                       # Wednesday
+      "Wash – Lunch (Indoor)",                            # Thursday
+      "Wash – EOD",                                       # Friday
   ],
   1297749740489936939: [  # Jessa
-      "Cook Rice w/ Eggs",           # Monday
-      "Wash – EOD",                  # Tuesday
-      "Organize Dishes",             # Wednesday
-      "Wash – Lunch (Indoor)",       # Thursday
-      "Wash – Breakfast (Indoor)"    # Friday
+      "Wash – EOD",                                       # Monday
+      "Cook Rice w/ Eggs + Set/Clean Table & Leftovers",  # Tuesday
+      "Wash – Lunch (Indoor)",                            # Wednesday
+      "Cook Rice w/ Eggs + Set/Clean Table & Leftovers",  # Thursday
+      "Wash – Lunch (Outdoor)",                           # Friday
   ],
   1297749642230104125: [  # Cris
-      "Wash – Breakfast (Outdoor)",  # Monday
-      "Wash – Lunch (Indoor)",       # Tuesday
-      "Cook Rice w/ Eggs",           # Wednesday
-      "Wash – Lunch (Outdoor)",      # Thursday
-      "Set/Clean Table & Leftovers"  # Friday
+      "Wash – Lunch (Outdoor)",                           # Monday
+      "Wash – Lunch (Indoor)",                            # Tuesday
+      "Cook Rice w/ Eggs + Set/Clean Table & Leftovers",  # Wednesday
+      "Wash – Breakfast (Indoor) + Organize Dishes",      # Thursday
+      "Wash – Breakfast (Indoor) + Organize Dishes",      # Friday
   ],
-  1315867037003944000: [  # Jo
-      "Wash – EOD",                  # Monday
-      "Cook – Lunch",                # Tuesday
-      "Cook – Breakfast",            # Wednesday
-      "Cook – Lunch",                # Thursday
-      "Wash – Breakfast (Outdoor)"   # Friday
+  1315867037003944000: [  # Jonathan
+      "Wash – Breakfast (Indoor) + Organize Dishes",      # Monday
+      "Cook – Lunch",                                     # Tuesday
+      "Cook – Breakfast",                                 # Wednesday
+      "Cook – Lunch",                                     # Thursday
+      "Wash – Lunch (Indoor)",                            # Friday
   ],
 }
 
