@@ -32,7 +32,7 @@ def is_weekday():
     return get_ph_time().weekday() < 5
 
 # --- Task Config ---
-channel_id = 1298102201905840220  # Channel for task posts
+channel_id = 1437247769835471019  # Channel for task posts
 
 # --- New Zealand Holidays (Manual List) ---
 NZ_HOLIDAYS_2025 = {
