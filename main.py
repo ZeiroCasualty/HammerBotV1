@@ -35,18 +35,18 @@ def is_weekday():
 channel_id = 1437247769835471019  # Channel for task posts
 
 # --- New Zealand Holidays (Manual List) ---
-NZ_HOLIDAYS_2025 = {
-    "2025-01-01",  # New Year's Day
-    "2025-01-02",  # Day after New Year's Day
-    "2025-02-06",  # Waitangi Day
-    "2025-04-18",  # Good Friday
-    "2025-04-21",  # Easter Monday
-    "2025-04-25",  # Anzac Day
-    "2025-06-02",  # King's Birthday
-    "2025-06-20",  # Matariki
-    "2025-10-27",  # Labour Day
-    "2025-12-25",  # Christmas Day
-    "2025-12-26",  # Boxing Day
+NZ_HOLIDAYS_2026 = {
+    "2026-01-01",  # New Year's Day
+    "2026-01-02",  # Day after New Year's Day
+    "2026-02-06",  # Waitangi Day
+    "2026-04-03",  # Good Friday
+    "2026-04-06",  # Easter Monday
+    "2026-04-27",  # Anzac Day (observed)
+    "2026-06-01",  # King's Birthday
+    "2026-07-10",  # Matariki
+    "2026-10-26",  # Labour Day
+    "2026-12-25",  # Christmas Day
+    "2026-12-28",  # Boxing Day (observed)
 }
 
 # --- Convert PH time to NZ date ---
@@ -66,7 +66,7 @@ members_info = {
   1297749741190385736: "Jen",
   1297749740489936939: "Jessa",
   1297749642230104125: "Cris",
-  1315867037003944000: "Jonathan",
+  1297749519324418051: "Jo",
 }
 
 members_tasks = {
@@ -112,7 +112,7 @@ members_tasks = {
       "Wash – Breakfast (Indoor) + Organize Dishes",      # Thursday
       "Wash – Breakfast (Indoor) + Organize Dishes",      # Friday
   ],
-  1315867037003944000: [  # Jonathan
+  1315867037003944000: [  # Jo
       "Wash – Breakfast (Indoor) + Organize Dishes",      # Monday
       "Cook – Lunch",                                     # Tuesday
       "Cook – Breakfast",                                 # Wednesday
