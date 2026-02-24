@@ -57,7 +57,7 @@ def get_nz_date_from_ph():
 
 # --- Check if NZ date is a holiday ---
 def is_nz_holiday_from_ph():
-    return get_nz_date_from_ph() in NZ_HOLIDAYS_2025
+    return get_nz_date_from_ph() in NZ_HOLIDAYS_2026
 
 members_info = {
   1297751702019113081: "Yasmin",
