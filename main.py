@@ -112,7 +112,7 @@ members_tasks = {
       "Wash – Breakfast (Indoor) + Organize Dishes",      # Thursday
       "Wash – Breakfast (Indoor) + Organize Dishes",      # Friday
   ],
-  1315867037003944000: [  # Jo
+  1297749519324418051: [  # Jo
       "Wash – Breakfast (Indoor) + Organize Dishes",      # Monday
       "Cook – Lunch",                                     # Tuesday
       "Cook – Breakfast",                                 # Wednesday
