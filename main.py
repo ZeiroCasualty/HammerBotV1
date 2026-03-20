@@ -23,7 +23,19 @@ scheduler_started = False  # Track if it’s started
 
 # --- Discord Bot Setup ---
 intents = discord.Intents.all()
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = commands.Bot(
+    command_prefix="!",
+    intents=intents,
+    allowed_contexts=app_commands.AppCommandContext(
+        guild=True,
+        dm_channel=True,
+        private_channel=True,
+    ),
+    allowed_installs=app_commands.AppInstallationType(
+        guild=True,
+        user=True,
+    ),
+)
 tree = bot.tree
 
 # --- Time Helper ---
