@@ -281,13 +281,9 @@ def format_failed_tx_entry(entry):
     tx_id = str(entry.get("transaction_id", "No ID"))
     email = str(entry.get("email", "No email"))
     product = str(entry.get("product", "Unknown product"))
+    amount = str(entry.get("amount", "No amount"))
 
-    try:
-        amount = float(entry.get("amount", 0))
-    except (TypeError, ValueError):
-        amount = 0.0
-
-    return f"• {tx_id} — {email} — {product} — ₱{amount:,.2f}"
+    return f"• {tx_id} — {email} — {product} — {amount}"
 
 
 async def fetch_github_directory(session: aiohttp.ClientSession, path: str):
