@@ -5,9 +5,11 @@ import aiohttp
 import asyncio
 import os
 import time
-from datetime import datetime
+import json
+from datetime import datetime, timedelta
 import pytz
 from dotenv import load_dotenv
+
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
@@ -33,6 +35,10 @@ def is_weekday():
 
 # --- Task Config ---
 channel_id = 1437247769835471019  # Channel for task posts
+ALLOWED_GROUP_DM_CHANNEL_ID = 1482943910325129226
+GITHUB_OWNER = "ZeiroCasualty"
+GITHUB_REPO = "HammerBotV1"
+FAILED_TX_BASE_PATH = "failed-transactions"
 
 # --- New Zealand Holidays (Manual List) ---
 NZ_HOLIDAYS_2026 = {
@@ -242,6 +248,121 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
+def get_failed_tx_target_dates():
+    today = get_ph_time().date()
+
+    if today.weekday() == 0:  # Monday
+        return [
+            today - timedelta(days=3),  # Friday
+            today - timedelta(days=2),  # Saturday
+            today - timedelta(days=1),  # Sunday
+        ]
+
+    return [today - timedelta(days=1)]
+
+
+def get_failed_tx_folder_for_date(target_date):
+    return f"{FAILED_TX_BASE_PATH}/{target_date.strftime('%m-%d-%Y')}"
+
+
+def format_failed_tx_entry(entry):
+    tx_id = str(entry.get("transaction_id", "No ID"))
+    email = str(entry.get("email", "No email"))
+    product = str(entry.get("product", "Unknown product"))
+
+    try:
+        amount = float(entry.get("amount", 0))
+    except (TypeError, ValueError):
+        amount = 0.0
+
+    return f"• {tx_id} — {email} — {product} — ₱{amount:,.2f}"
+
+
+async def fetch_github_directory(session: aiohttp.ClientSession, path: str):
+    url = f"https://api.github.com/repos/{GITHUB_OWNER}/{GITHUB_REPO}/contents/{path}"
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "HammerBotV1",
+    }
+
+    async with session.get(url, headers=headers) as resp:
+        if resp.status == 404:
+            return []
+        resp.raise_for_status()
+        data = await resp.json()
+
+        if isinstance(data, list):
+            return data
+
+        return []
+
+
+async def fetch_github_json_file(session: aiohttp.ClientSession, download_url: str):
+    headers = {
+        "User-Agent": "HammerBotV1",
+    }
+
+    async with session.get(download_url, headers=headers) as resp:
+        resp.raise_for_status()
+        text = await resp.text()
+        return json.loads(text)
+
+
+async def load_failed_transactions_for_date(session: aiohttp.ClientSession, target_date):
+    folder_path = get_failed_tx_folder_for_date(target_date)
+    entries = []
+
+    try:
+        items = await fetch_github_directory(session, folder_path)
+    except Exception as e:
+        print(f"Error listing GitHub folder {folder_path}: {e}")
+        return []
+
+    json_files = [
+        item for item in items
+        if item.get("type") == "file" and str(item.get("name", "")).endswith(".json")
+    ]
+
+    for item in json_files:
+        download_url = item.get("download_url")
+        if not download_url:
+            continue
+
+        try:
+            data = await fetch_github_json_file(session, download_url)
+
+            if isinstance(data, dict):
+                entries.append(data)
+            elif isinstance(data, list):
+                entries.extend([x for x in data if isinstance(x, dict)])
+        except Exception as e:
+            print(f"Error reading JSON file {item.get('name')}: {e}")
+
+    return entries
+
+async def build_failed_tx_report():
+    target_dates = get_failed_tx_target_dates()
+    lines = ["Failed transactions", ""]
+
+    async with aiohttp.ClientSession() as session:
+        for target_date in target_dates:
+            entries = await load_failed_transactions_for_date(session, target_date)
+            entries.sort(key=lambda x: str(x.get("transaction_id", "")).lower())
+
+            day_label = target_date.strftime("%A")
+            date_label = target_date.strftime("%m-%d-%Y")
+            lines.append(f"{day_label} ({date_label})")
+
+            if not entries:
+                lines.append("• No failed transactions")
+            else:
+                for entry in entries:
+                    lines.append(format_failed_tx_entry(entry))
+
+            lines.append("")
+
+    return "\n".join(lines).strip()
+
 # --- SLASH COMMANDS ---
 
 @tree.command(name="hello", description="Say hi to the bot")
@@ -319,6 +440,50 @@ async def manual_daily(interaction: discord.Interaction):
     await interaction.response.defer()
     await send_tasks_to_channel()
     await interaction.followup.send("📬 Daily tasks have been sent to the channel.")
+
+@tree.command(name="transactions", description="Show failed transactions for the reporting period")
+@app_commands.user_install()
+@app_commands.allowed_contexts(guilds=False, dms=False, private_channels=True)
+async def transactions(interaction: discord.Interaction):
+    if interaction.channel_id != ALLOWED_GROUP_DM_CHANNEL_ID:
+        await interaction.response.send_message(
+            "This command only works in the intended Group DM.",
+            ephemeral=True,
+        )
+        return
+
+    await interaction.response.defer()
+
+    try:
+        report = await build_failed_tx_report()
+
+        if len(report) <= 2000:
+            await interaction.followup.send(report)
+            return
+
+        chunks = []
+        current = ""
+
+        for line in report.splitlines():
+            candidate = f"{current}\n{line}".strip() if current else line
+            if len(candidate) > 1900:
+                if current:
+                    chunks.append(current)
+                current = line
+            else:
+                current = candidate
+
+        if current:
+            chunks.append(current)
+
+        for chunk in chunks:
+            await interaction.followup.send(chunk)
+
+    except Exception as e:
+        print(f"Error in /transactions: {e}")
+        await interaction.followup.send(
+            "Sorry, I couldn't fetch the failed transactions right now."
+        )
 
 # --- Start Bot ---
 if TOKEN:
